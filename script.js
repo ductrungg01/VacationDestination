@@ -1,8 +1,8 @@
 var detailsForm = document.querySelector('#destination_details_form');
 
-detailsForm.addEventListener('submit', hanldFormSubmit);
+detailsForm.addEventListener('submit', handleFormSubmit);
 
-function hanldFormSubmit(event){
+function handleFormSubmit(event){
     event.preventDefault();
 
     var desName = event.target.elements['name'].value;
@@ -14,16 +14,19 @@ function hanldFormSubmit(event){
         detailsForm.elements[i].value = "";
     }
 
-    // create card here
+    var destCard = createDestinationCard(desName, desLocation, desPhoto, desDescription);
+    
     var wishListContainer = document.getElementById('destinations_container');
     
     if (wishListContainer.children.length === 0) {
         document.getElementById('title').innerHTML = 'My Wish List';
     }
+
+    document.querySelector("#destinations_container").appendChild(destCard);
 }
 
-function createDestinationCard(name, location, photoUrl, desc){
-    var card = document.createElement(div);
+function createDestinationCard(name, location, photoUrl, desDescription){
+    var card = document.createElement('div');
     card.className = 'card';
 
     var img = document.createElement('img');
@@ -38,7 +41,7 @@ function createDestinationCard(name, location, photoUrl, desc){
     }
     card.appendChild(img);
 
-    var cardBody = document.createElement(div);
+    var cardBody = document.createElement('div');
     cardBody.className = 'card-body';
 
     var cardTitle = document.createElement('h3');
@@ -65,4 +68,9 @@ function createDestinationCard(name, location, photoUrl, desc){
     card.appendChild(cardBody);
 
     return card;
+}
+
+function removeDestination(event){
+    var card = event.target.parentElement.parentElement;
+    card.remove();
 }
