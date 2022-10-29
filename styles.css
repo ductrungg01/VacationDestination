@@ -46,7 +46,7 @@ h1, h2, h3, h4, p {
 
 label {
     display: block;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
 }
 
 input, textarea, #destination_details_form button {
@@ -54,6 +54,7 @@ input, textarea, #destination_details_form button {
     width: 100%;
     margin-bottom: 1em;
     border: 1px solid #666;
+    padding: 10px;
     box-sizing: border-box;
 }
 
